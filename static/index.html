@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>도서 검색</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <p class="eyebrow">BOOK SEARCH</p>
+        <h1>도서 검색</h1>
+        <p class="description">도서명 일부를 입력해 원하는 책을 찾아보세요.</p>
+      </header>
+
+      <form id="search-form" class="search-form" role="search">
+        <label class="sr-only" for="search-input">도서명</label>
+        <input
+          id="search-input"
+          name="query"
+          type="search"
+          maxlength="200"
+          placeholder="도서명을 입력하세요"
+          autocomplete="off"
+        >
+        <button id="search-button" type="submit">검색</button>
+      </form>
+
+      <section aria-labelledby="result-heading">
+        <div class="result-header">
+          <h2 id="result-heading">검색 결과</h2>
+          <p id="result-summary" aria-live="polite"></p>
+        </div>
+
+        <p id="loading" class="state-message" role="status" hidden>불러오는 중...</p>
+        <p id="empty" class="state-message" hidden>검색 결과가 없습니다.</p>
+        <p id="error" class="state-message error" role="alert" hidden></p>
+
+        <div id="table-wrapper" class="table-wrapper" aria-busy="false">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">제목</th>
+                <th scope="col">저자</th>
+                <th scope="col">출판사</th>
+                <th scope="col">카테고리</th>
+                <th scope="col">출간일</th>
+                <th scope="col">가격</th>
+                <th scope="col">재고</th>
+              </tr>
+            </thead>
+            <tbody id="book-list"></tbody>
+          </table>
+        </div>
+
+        <nav class="pagination" aria-label="검색 결과 페이지 이동">
+          <button id="previous-button" type="button">이전</button>
+          <span id="page-indicator" aria-live="polite">0 / 0</span>
+          <button id="next-button" type="button">다음</button>
+        </nav>
+      </section>
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
